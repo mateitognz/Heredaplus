@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucesión sin Dolores - Notaría 27</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-amber-500 text-white p-2 rounded-xl shadow-md">
+                    <i data-lucide="scale"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-slate-900">Sucesión sin Dolores</h1>
+                    <p class="text-xs text-slate-500 font-medium">Notaría 27 • Modelo de Eficiencia & Empatía</p>
+                </div>
+            </div>
+            
+            <div class="bg-slate-100 p-1 rounded-xl flex gap-1 border border-slate-200">
+                <button onclick="switchView('ciudadano')" id="btn-ciudadano" class="view-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white text-amber-600 shadow-sm">
+                    <span class="flex items-center gap-2"><i data-lucide="heart" class="w-4 h-4"></i> Ciudadano / Abogado</span>
+                </button>
+                <button onclick="switchView('interno')" id="btn-interno" class="view-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all text-slate-600 hover:text-slate-900">
+                    <span class="flex items-center gap-2"><i data-lucide="shield-alert" class="w-4 h-4"></i> Equipo Interno</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8">
+        
+        <section id="view-ciudadano" class="space-y-8">
+            <div class="bg-gradient-to-r align-middle from-slate-900 to-indigo-950 rounded-2xl p-6 md:p-8 text-white shadow-xl relative overflow-hidden">
+                <div class="relative z-10 max-w-2xl">
+                    <span class="bg-amber-500/20 text-amber-300 text-xs px-3 py-1 rounded-full font-semibold uppercase tracking-wider">Trámite Ágil de Mutuo Acuerdo</span>
+                    <h2 class="text-2xl md:text-3xl font-bold mt-3 mb-2">Le acompañamos en este momento</h2>
+                    <p class="text-slate-300 text-sm md:text-base leading-relaxed">Sabemos que gestionar una sucesión es complejo emocional y legalmente. Diseñamos este espacio para que su proceso con la Notaría 27 sea claro, transparente y libre de fricciones.</p>
+                </div>
+                <div class="absolute right-0 bottom-0 top-0 w-1/3 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-amber-500/20 via-transparent to-transparent hidden md:block"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <div class="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <i data-lucide="clipboard-check" class="text-amber-500"></i>
+                            <h3 class="text-lg font-bold text-slate-900">Enrutador de Requisitos Previo</h3>
+                        </div>
+                        <p class="text-slate-500 text-sm mb-6">Evite reprocesos. Marque los documentos que ya posee para verificar si el trámite está listo para radicación jurídica.</p>
+                        
+                        <form id="checklist-form" class="space-y-3">
+                            <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 transition cursor-pointer">
+                                <input type="checkbox" class="mt-1 h-4 w-4 rounded text-amber-600 focus:ring-amber-500 border-slate-300" onchange="calculateReadiness()">
+                                <div>
+                                    <span class="block text-sm font-semibold text-slate-800">Registro Civil de Defunción</span>
+                                    <span class="block text-xs text-slate-500">Documento base indispensable (copia auténtica).</span>
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 transition cursor-pointer">
+                                <input type="checkbox" class="mt-1 h-4 w-4 rounded text-amber-600 focus:ring-amber-500 border-slate-300" onchange="calculateReadiness()">
+                                <div>
+                                    <span class="block text-sm font-semibold text-slate-800">Registros Civiles de Nacimiento (Herederos)</span>
+                                    <span class="block text-xs text-slate-500">Para demostrar el parentesco o vocación hereditaria.</span>
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 transition cursor-pointer">
+                                <input type="checkbox" class="mt-1 h-4 w-4 rounded text-amber-600 focus:ring-amber-500 border-slate-300" onchange="calculateReadiness()">
+                                <div>
+                                    <span class="block text-sm font-semibold text-slate-800">Escrituras Públicas o Títulos de Propiedad</span>
+                                    <span class="block text-xs text-slate-500">Bienes inmuebles o muebles sujetos a registro que entran en la masa hereditaria.</span>
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 transition cursor-pointer">
+                                <input type="checkbox" class="mt-1 h-4 w-4 rounded text-amber-600 focus:ring-amber-500 border-slate-300" onchange="calculateReadiness()">
+                                <div>
+                                    <span class="block text-sm font-semibold text-slate-800">Paz y Salvos Municipales (Predial y Valorización)</span>
+                                    <span class="block text-xs text-slate-500">Vigentes al momento de la radicación.</span>
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 transition cursor-pointer">
+                                <input type="checkbox" class="mt-1 h-4 w-4 rounded text-amber-600 focus:ring-amber-500 border-slate-300" onchange="calculateReadiness()">
+                                <div>
+                                    <span class="block text-sm font-semibold text-slate-800">Poder de Abogado, Demanda y Trabajo de Partición</span>
+                                    <span class="block text-xs text-slate-500">Requerido si la cuantía supera los 15 SMLMV.</span>
+                                </div>
+                            </label>
+                        </form>
+                    </div>
+
+                    <div class="mt-6 p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <div>
+                            <span class="text-xs text-slate-500 uppercase font-bold tracking-wider">Estado de Documentación</span>
+                            <div class="flex items-center gap-2 mt-1">
+                                <div id="status-badge" class="h-2.5 w-2.5 rounded-full bg-red-500"></div>
+                                <span id="status-text" class="text-sm font-bold text-slate-700">Incompleto (Faltan requisitos)</span>
+                            </div>
+                        </div>
+                        <button id="btn-radicar" disabled class="w-full sm:w-auto bg-slate-300 text-slate-500 px-6 py-2.5 rounded-xl font-semibold text-sm cursor-not-allowed transition-all shadow-sm">
+                            Radicar Digitalmente
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <i data-lucide="calculator" class="text-amber-500"></i>
+                            <h3 class="text-lg font-bold text-slate-900">Simulador de Gastos</h3>
+                        </div>
+                        <p class="text-slate-500 text-sm mb-4">Ingrese la cuantía total estimada de los bienes para prever los costos notariales aproximados del mutuo acuerdo.</p>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-600 uppercase mb-2">Cuantía Total del Activo ($ COP)</label>
+                                <input type="number" id="asset-value" value="50000000" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition" oninput="calculateFees()">
+                            </div>
+
+                            <div class="p-3 bg-slate-50 rounded-xl space-y-2 text-sm border border-slate-100">
+                                <div class="flex justify-between text-slate-600">
+                                    <span>Derechos Notariales:</span>
+                                    <span id="fee-notary" class="font-semibold">$0</span>
+                                </div>
+                                <div class="flex justify-between text-slate-600">
+                                    <span>IVA (19%):</span>
+                                    <span id="fee-iva" class="font-semibold">$0</span>
+                                </div>
+                                <div class="flex justify-between text-slate-600">
+                                    <span>Aportes Fondos/Super:</span>
+                                    <span id="fee-funds" class="font-semibold">$0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center">
+                        <span class="text-sm font-bold text-slate-900">Total Notaría Estimado:</span>
+                        <span id="fee-total" class="text-xl font-black text-amber-600">$0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                <div class="flex items-center gap-2 mb-6">
+                    <i data-lucide="help-circle" class="text-amber-500"></i>
+                    <h3 class="text-lg font-bold text-slate-900">Respuestas Inmediatas a Dudas Comunes</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                        <h4 class="font-bold text-sm text-slate-800 mb-1">¿Cuánto dura el trámite de mutuo acuerdo?</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Si los documentos están completos, el promedio de liquidación y firma de escritura es de 15 a 20 días hábiles, supeditado a la respuesta de la DIAN.</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                        <h4 class="font-bold text-sm text-slate-800 mb-1">¿Se requiere obligatoriamente abogado?</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Si la cuantía de los bienes supera los 15 Salarios Mínimos Mensuales Legales Vigentes (SMLMV), la ley colombiana exige actuar por medio de apoderado judicial.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="view-interno" class="space-y-8 hidden">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-slate-400 uppercase">Trámites Activos Hoy</span>
+                        <h4 class="text-2xl font-black text-slate-900 mt-1">112</h4>
+                    </div>
+                    <div class="p-3 bg-blue-50 text-blue-600 rounded-xl"><i data-lucide="activity"></i></div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-slate-400 uppercase">Sucesiones Mutuo Acuerdo</span>
+                        <h4 class="text-2xl font-black text-amber-600 mt-1">92%</h4>
+                    </div>
+                    <div class="p-3 bg-amber-50 text-amber-600 rounded-xl"><i data-lucide="users"></i></div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-slate-400 uppercase">Tiempo Medio de Firma</span>
+                        <h4 class="text-2xl font-black text-emerald-600 mt-1">14 Días</h4>
+                    </div>
+                    <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl"><i data-lucide="clock"></i></div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-slate-400 uppercase">Reprocesos Evitados</span>
+                        <h4 class="text-2xl font-black text-indigo-600 mt-1">43 esta sem.</h4>
+                    </div>
+                    <div class="p-3 bg-indigo-50 text-indigo-600 rounded-xl"><i data-lucide="shield-check"></i></div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="p-6 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">Bandeja de Revisión Jurídica</h3>
+                        <p class="text-slate-500 text-sm">Validación oportuna de solicitudes enviadas a través del Enrutador Digital.</p>
+                    </div>
+                    <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full font-bold">3 Pendientes Críticos</span>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-100">
+                                <th class="p-4">ID Radicado</th>
+                                <th class="p-4">Causante / Solicitante</th>
+                                <th class="p-4">Fecha Envío</th>
+                                <th class="p-4">Validación Requisitos</th>
+                                <th class="p-4 text-right">Acción Operativa</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body" class="divide-y divide-slate-100 text-sm">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2 pointer-events-none"></div>
+
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 font-medium">
+        <p>© 2026 Notaría 27 - Medellín, Colombia. Prototipo Funcional de Servicio Legal Centrado en las Personas.</p>
+    </footer>
+
+    <script>
+        // Inicializar Iconos de Lucide
+        lucide.createIcons();
+
+        // Base de datos local simulada (Persistencia en memoria del navegador)
+        let expedientes = [
+            { id: "SUC-2026-041", causante: "Alberto Gómez Restrepo", solicitante: "Dr. Carlos Mato (Apoderado)", fecha: "Hoy, 10:24 AM", checks: 5, estado: "Listo para Minuta" },
+            { id: "SUC-2026-039", causante: "María Helena Zuleta", solicitante: "Sofía Gómez (Heredera)", fecha: "Ayer", checks: 4, estado: "Revisión Documental" },
+            { id: "SUC-2026-038", causante: "Carlos Arturo Montoya", solicitante: "Dra. Luz Marina Vélez", fecha: "Hace 2 días", checks: 5, estado: "Listo para Minuta" }
+        ];
+
+        // Alternancia de Vistas (Omnicanalidad)
+        function switchView(view) {
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-amber-600', 'shadow-sm');
+                btn.classList.add('text-slate-600', 'hover:text-slate-900');
+            });
+            
+            if (view === 'ciudadano') {
+                document.getElementById('view-ciudadano').classList.remove('hidden');
+                document.getElementById('view-interno').classList.add('hidden');
+                document.getElementById('btn-ciudadano').classList.add('bg-white', 'text-amber-600', 'shadow-sm');
+            } else {
+                document.getElementById('view-interno').classList.remove('hidden');
+                document.getElementById('view-ciudadano').classList.add('hidden');
+                document.getElementById('btn-interno').classList.add('bg-white', 'text-amber-600', 'shadow-sm');
+                renderTable();
+            }
+        }
+
+        // Lógica de Validación del Enrutador de Documentos
+        function calculateReadiness() {
+            const checkboxes = document.querySelectorAll('#checklist-form input[type="checkbox"]');
+            const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+            
+            const badge = document.getElementById('status-badge');
+            const text = document.getElementById('status-text');
+            const btn = document.getElementById('btn-radicar');
+
+            if (checkedCount === checkboxes.length) {
+                badge.className = "h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse";
+                text.innerText = "100% Completo (Viabilidad Jurídica Alta)";
+                text.className = "text-sm font-bold text-emerald-600";
+                btn.disabled = false;
+                btn.className = "w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-white px-6 py-2.5 rounded-xl font-bold text-sm transition-all shadow-md active:scale-95 cursor-pointer";
+                btn.onclick = simularRadicacion;
+            } else if (checkedCount >= 3) {
+                badge.className = "h-2.5 w-2.5 rounded-full bg-amber-500";
+                text.innerText = `Faltan documentos (${checkedCount}/${checkboxes.length})`;
+                text.className = "text-sm font-bold text-amber-600";
+                deshabilitarRadicacion(btn);
+            } else {
+                badge.className = "h-2.5 w-2.5 rounded-full bg-red-500";
+                text.innerText = "Incompleto (Faltan requisitos críticos)";
+                text.className = "text-sm font-bold text-slate-700";
+                deshabilitarRadicacion(btn);
+            }
+        }
+
+        function deshabilitarRadicacion(btn) {
+            btn.disabled = true;
+            btn.className = "w-full sm:w-auto bg-slate-300 text-slate-500 px-6 py-2.5 rounded-xl font-semibold text-sm cursor-not-allowed transition-all shadow-sm";
+        }
+
+        // Lógica del Simulador Financiero (Estatuto Notarial Colombiano)
+        function calculateFees() {
+            const assetValue = parseFloat(document.getElementById('asset-value').value) || 0;
+            
+            // Simulación base escalonada aproximada para derechos notariales
+            let baseFee = 0;
+            if (assetValue > 0) {
+                baseFee = 150000 + (assetValue * 0.0035); // Tarifa base + 3.5 x mil aproximado
+            }
+            
+            const iva = baseFee * 0.19;
+            const funds = baseFee * 0.10; // Aporte a la Superintendencia y fondo de notariado
+            const total = baseFee + iva + funds;
+
+            document.getElementById('fee-notary').innerText = formatCurrency(baseFee);
+            document.getElementById('fee-iva').innerText = formatCurrency(iva);
+            document.getElementById('fee-funds').innerText = formatCurrency(funds);
+            document.getElementById('fee-total').innerText = formatCurrency(total);
+        }
+
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(value);
+        }
+
+        // Simulación de Flujo sin Fricción (Push a la tabla interna)
+        function simularRadicacion() {
+            const nuevoExpediente = {
+                id: `SUC-2026-0${Math.floor(Math.random() * 90) + 10}`,
+                causante: "Caso Exclusivo de Simulación",
+                solicitante: "Usuario Digital de la Notaría",
+                fecha: "Hace un momento",
+                checks: 5,
+                estado: "Listo para Minuta"
+            };
+            
+            expedientes.unshift(nuevoExpediente);
+            showToast("✨ Solicitud enviada con éxito. El equipo interno ya cuenta con sus documentos verificados.");
+            
+            // Resetear formulario
+            document.querySelectorAll('#checklist-form input[type="checkbox"]').forEach(cb => cb.checked = false);
+            calculateReadiness();
+        }
+
+        // Renderizado Dinámico de la Tabla de Control Interno
+        function renderTable() {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = "";
+            
+            expedientes.forEach(exp => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50/80 transition-colors";
+                tr.innerHTML = `
+                    <td class="p-4 font-mono font-bold text-xs text-slate-500">${exp.id}</td>
+                    <td class="p-4">
+                        <span class="block font-semibold text-slate-900">${exp.causante}</span>
+                        <span class="block text-xs text-slate-400">${exp.solicitante}</span>
+                    </td>
+                    <td class="p-4 text-xs text-slate-500">${exp.fecha}</td>
+                    <td class="p-4">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">${exp.checks}/5 Requisitos</span>
+                        </div>
+                    </td>
+                    <td class="p-4 text-right">
+                        <button onclick="procesarTramite('${exp.id}')" class="bg-slate-900 hover:bg-amber-600 text-white text-xs px-3 py-1.5 rounded-lg font-semibold transition-all">
+                            Asignar Radicador
+                        </button>
+                    </td>
+                </tr>`;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function procesarTramite(id) {
+            showToast(`💼 Expediente ${id} asignado al área jurídica para elaboración de escritura.`);
+            expedientes = expedientes.filter(exp => exp.id !== id);
+            renderTable();
+        }
+
+        // Componente de Notificaciones Dinámicas
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = "bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-xl flex items-center gap-2 border border-slate-800 transition-all duration-300 opacity-0 transform translate-y-2 pointer-events-auto";
+            toast.innerText = message;
+            
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.remove('opacity-0', 'translate-y-2');
+            }, 50);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        // Ejecución de funciones por defecto al cargar
+        calculateFees();
+    </script>
+</body>
+</html>
